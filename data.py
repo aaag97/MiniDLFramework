@@ -8,6 +8,14 @@ import matplotlib.pyplot as plt
 nb_samples = 1000
 
 def generate_set(nb):
+    """
+    function to generate the data set
+    Params: 
+    nb - number of samples 
+    Returns:
+    input_ - matrix with (x,y) coordinates of each data sample
+    target - vector with the class of each data sample
+    """
     input_ = empty(nb,2).uniform_(0,1)
     target = empty(nb,).fill_(0.)
     r = 1/math.sqrt(2*math.pi)  #boundary
@@ -19,6 +27,15 @@ def generate_set(nb):
     return input_ , target
 
 def visualize_data(nb_samples, dataset, labels):
+    """
+    function to plot the data set 
+    Params:
+    nb_samples - number of samples
+    dataset - set of 2d data samples 
+    labels - vector containing the ground truth classes
+    Returns:
+    None
+    """
     for i in range(nb_samples):
         if labels[i] == 1:
             plt.plot(dataset[i,0], dataset[i,1], '*', color='blue')   #class 1 

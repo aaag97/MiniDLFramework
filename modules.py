@@ -164,11 +164,12 @@ class MSE(Module):
         self.ds = None
             
     def forward(self):
-        self.s = ((self.output - self.target)**2).sum(1)
+#         print(1/self.output.size()[0])
+        self.s = ((self.output - self.target)**2).sum(1) * 1/self.output.size()[0]
         return self.s
         
     def backward(self):
-        self.ds = 2 * (self.output - self.target)
+        self.ds = 2 * (self.output - self.target) * 1/self.output.size()[0]
         return self.ds
         
     def param(self):
